@@ -7,7 +7,7 @@ use App\Enums\SettingColor;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DeviceRequest extends FormRequest
+class PresetRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,14 @@ class DeviceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', 'string', Rule::enum(DeviceType::class)],
             'name' => 'required|string|max:255',
-
-            'settings' => 'required|array',
-
-            'settings.power' => 'required|boolean',
-            'settings.brightness' => 'nullable|integer|min:0|max:100',
-            'settings.color' => ['nullable','string', Rule::enum(SettingColor::class)],
-            'settings.speed' => 'nullable|integer|min:0|max:100',
+            'device' => 'required|array',
+            'device.type' => ['required', 'string', Rule::enum(DeviceType::class)],
+            'device.settings' => 'required|array',
+            'device.settings.power' => 'required|boolean',
+            'device.settings.brightness' => 'nullable|integer|min:0|max:100',
+            'device.settings.color' => ['nullable','string', Rule::enum(SettingColor::class)],
+            'device.settings.speed' => 'nullable|integer|min:0|max:100',
         ];
     }
 }

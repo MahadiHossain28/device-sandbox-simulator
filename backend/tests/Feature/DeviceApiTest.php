@@ -87,5 +87,7 @@ class DeviceApiTest extends TestCase
                 'success' => true,
                 'data' => $updatedData,
             ]);
+
+        $this->assertDatabaseHas('devices', array_merge($updatedData, ['settings' => json_encode($updatedData['settings'])]));
     }
 }
