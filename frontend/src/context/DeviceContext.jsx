@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
-import {getDevicesApi, getPresetsApi, savePresetApi} from "../api/Apis.jsx";
+import {getDataApi, savePresetApi} from "../api/Apis.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const DeviceContext = createContext();
@@ -52,22 +52,20 @@ export const DeviceProvider = ({ children }) => {
             });
     };
 
-    const fetchPresets = async () => {
-        const cachedPresets = localStorage.getItem('presets');
-        if (cachedPresets) {
-            return JSON.parse(cachedPresets);
-        }
-        const response = await getPresetsApi();
-        localStorage.setItem('presets', JSON.stringify(response.data.data));
-        return response.data.data;
-    };
-    const fetchDevices = async () => {
+    const fetchData = async () => {
         const cachedDefaultDevices = localStorage.getItem('defaultDevices');
+        const cachedPresets = localStorage.getItem('presets');
+
         if (cachedDefaultDevices && cachedDefaultDevices !== 'null' && cachedDefaultDevices !== '') {
             return JSON.parse(cachedDefaultDevices);
         }
-        const response = await getDevicesApi();
-        localStorage.setItem('defaultDevices', JSON.stringify(response.data.data));
+
+        if (cachedPresets) {
+            return JSON.parse(cachedPresets);
+        }
+        const response = await getDataApi();
+        localStorage.setItem('defaultDevices', JSON.stringify(response.data.data.devices));
+        localStorage.setItem('presets', JSON.stringify(response.data.data.presets));
         return response.data.data;
     };
 
@@ -76,12 +74,14 @@ export const DeviceProvider = ({ children }) => {
     }, [devices]);
 
     useEffect(() => {
-        fetchPresets().then(data => setPresets(data));
-        fetchDevices().then(data => setDefaultDevices(data));
+        fetchData().then(data => {
+            setDefaultDevices(data.devices);
+            setPresets(data.presets)
+        });
     }, []);
 
     return (
-        <DeviceContext.Provider value={{ defaultDevices, devices, addDevice, updateDevice, presets, savePreset, fetchPresets, isChanged, setIsChanged }}>
+        <DeviceContext.Provider value={{ defaultDevices, devices, addDevice, updateDevice, presets, savePreset, isChanged, setIsChanged }}>
             {children}
         </DeviceContext.Provider>
     );
