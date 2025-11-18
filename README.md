@@ -4,7 +4,7 @@
 
 The **Device Sandbox Simulator** lets users drag smart devices into a virtual room, control them in real time, and save/load presets through a Laravel backend.
 
-![Demo GIF](assets/demo.mov)
+![Demo GIF](assets/demo.gif)
 
 [Live Link](https://mahadi.unanimousit.com/)
 
