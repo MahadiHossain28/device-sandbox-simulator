@@ -195,13 +195,19 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 4️⃣ Run Migrations
+### 4️⃣ Generate Key
+
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Run Migrations
 
 ```bash
 php artisan migrate --seed
 ```
 
-### 5️⃣ Start Laravel Server
+### 6️⃣ Start Laravel Server
 
 ```bash
 php artisan serve
@@ -235,7 +241,7 @@ or
 
 ```bash
 npm run build
-npm run start
+npm run preview
 ```
 
 Frontend runs at:
