@@ -4,6 +4,10 @@
 
 The **Device Sandbox Simulator** lets users drag smart devices into a virtual room, control them in real time, and save/load presets through a Laravel backend.
 
+![Demo GIF](assets/demo.gif)
+
+![Live Link](https://mahadi.unanimousit.com/)
+
 ---
 
 ## Table of Contents
@@ -11,18 +15,18 @@ The **Device Sandbox Simulator** lets users drag smart devices into a virtual ro
 - [Tech Stack](#-tech-stack)
 - [Features](#-features)
 - [System Architecture](#-system-architecture)
-    - [Frontend Structure](#frontend-structure)
-    - [Backend (Laravel)](#backend-laravel)
+  - [Frontend Structure](#frontend-structure)
+  - [Backend (Laravel)](#backend-laravel)
 - [Installation](#️-installation)
-    - [Clone the Repository](#1️⃣-clone-the-repository)
+  - [Clone the Repository](#1️⃣-clone-the-repository)
 - [🖥️ Backend Setup (Laravel)](#️-backend-setup-laravel)
-    - [Install Laravel Dependencies](#2️⃣-install-laravel-dependencies)
-    - [Setup Environment](#3️⃣-setup-environment)
-    - [Run Migrations](#4️⃣-run-migrations)
-    - [Start Laravel Server](#5️⃣-start-laravel-server)
+  - [Install Laravel Dependencies](#2️⃣-install-laravel-dependencies)
+  - [Setup Environment](#3️⃣-setup-environment)
+  - [Run Migrations](#4️⃣-run-migrations)
+  - [Start Laravel Server](#5️⃣-start-laravel-server)
 - [💻 Frontend Setup (React)](#-frontend-setup-react)
-    - [Install Dependencies](#6️⃣-install-dependencies)
-    - [Start React App](#7️⃣-start-react-app)
+  - [Install Dependencies](#6️⃣-install-dependencies)
+  - [Start React App](#7️⃣-start-react-app)
 - [🔗 API Endpoints](#-api-endpoints)
 - [🧬 State Management](#-state-management)
 - [🧪 Testing](#-testing)
@@ -36,16 +40,16 @@ The **Device Sandbox Simulator** lets users drag smart devices into a virtual ro
 
 ### **Frontend**
 
-* ⚛️ React (Functional Components + Hooks)
-* 🎯 React DnD (drag & drop)
-* 🔗 Axios (REST API client)
-* 🧠 Context API
+- ⚛️ React (Functional Components + Hooks)
+- 🎯 React DnD (drag & drop)
+- 🔗 Axios (REST API client)
+- 🧠 Context API
 
 ### **Backend**
 
-* 🐘 Laravel 12
-* 🌐 REST API + Eloquent ORM
-* 🗄️ MySQL
+- 🐘 Laravel 12
+- 🌐 REST API + Eloquent ORM
+- 🗄️ MySQL
 
 ---
 
@@ -53,36 +57,36 @@ The **Device Sandbox Simulator** lets users drag smart devices into a virtual ro
 
 ### 🎛️ **Drag & Drop Builder**
 
-* Sidebar device list (Light, Fan)
-* Drag devices into the Testing Canvas
-* Dynamic device controllers appear when added
+- Sidebar device list (Light, Fan)
+- Drag devices into the Testing Canvas
+- Dynamic device controllers appear when added
 
 ---
 
 ### 💡 **Light Controls**
 
-* Power toggle
-* Color temperature: warm / neutral / cool / pink
-* Brightness slider (0–100%)
-* Real-time visual updates
+- Power toggle
+- Color temperature: warm / neutral / cool / pink
+- Brightness slider (0–100%)
+- Real-time visual updates
 
 ---
 
 ### 🌀 **Fan Controls**
 
-* Power on/off
-* Speed slider (0–100%)
-* Smooth animation based on speed
+- Power on/off
+- Speed slider (0–100%)
+- Smooth animation based on speed
 
 ---
 
 ### 📁 **Preset Management**
 
-* Save entire canvas configuration
-* Name your preset
-* Presets appear in the sidebar
-* Drag preset into canvas to restore device states
-* Fully persistent via Laravel API + MySQL
+- Save entire canvas configuration
+- Name your preset
+- Presets appear in the sidebar
+- Drag preset into canvas to restore device states
+- Fully persistent via Laravel API + MySQL
 
 ---
 
@@ -187,6 +191,7 @@ Copy `.env.example` → `.env` :
 ```bash
 cp .env.example .env
 ```
+
 Configure .env:
 
 ```
@@ -220,15 +225,15 @@ Backend runs at:
 
 ## 💻 Frontend Setup (React)
 
-### 6️⃣ Install Dependencies
+### 7️⃣ Install Dependencies
 
 ```bash
 cd ../
 cd frontend
-npm install 
+npm install
 ```
 
-### 7️⃣ Start React App
+### 8️⃣ Start React App
 
 ```bash
 npm run dev
@@ -246,7 +251,6 @@ npm run preview
 
 Frontend runs at:
 👉 **[http://localhost:4173](http://localhost:4173)**
-
 
 ---
 
@@ -282,10 +286,10 @@ Save a new preset:
 
 Managed via Context API :
 
-* Devices in the canvas
-* Individual device settings
-* Preset list loading/saving
-* Global loading & UI states
+- Devices in the canvas
+- Individual device settings
+- Preset list loading/saving
+- Global loading & UI states
 
 Ensures smooth and consistent UI behavior.
 
@@ -295,7 +299,7 @@ Ensures smooth and consistent UI behavior.
 
 ## 🧪 Testing
 
-A sample PHPUnit test is included in ```tests/Feature/``` .
+A sample PHPUnit test is included in `tests/Feature/` .
 
 Run all tests:
 
@@ -308,19 +312,19 @@ php artisan test
 
 ## 🧹 Additional Improvements
 
-* Smooth animations
-* Clean modular device components
-* Error handling + toast notifications
-* Fully documented codebase
+- Smooth animations
+- Clean modular device components
+- Error handling + toast notifications
+- Fully documented codebase
 
 ---
 
 ## 🚀 Future Enhancements
 
-* 🔐 User authentication (Laravel Sanctum)
-* 🔌 More device types (AC, RGB Bulb, Smart Plug)
-* 📡 Real-time updates with WebSockets
-* ☁️ Cloud preset syncing
+- 🔐 User authentication (Laravel Sanctum)
+- 🔌 More device types (AC, RGB Bulb, Smart Plug)
+- 📡 Real-time updates with WebSockets
+- ☁️ Cloud preset syncing
 
 ---
 
