@@ -53,20 +53,37 @@ export const DeviceProvider = ({ children }) => {
     };
 
     const fetchData = async () => {
-        const cachedDefaultDevices = localStorage.getItem('defaultDevices');
-        const cachedPresets = localStorage.getItem('presets');
+        try {
+            const cachedDefaultDevices = localStorage.getItem('defaultDevices');
+            const cachedPresets = localStorage.getItem('presets');
 
-        if (cachedDefaultDevices && cachedDefaultDevices !== 'null' && cachedDefaultDevices !== '') {
-            return JSON.parse(cachedDefaultDevices);
-        }
+            const devices = cachedDefaultDevices ? JSON.parse(cachedDefaultDevices) : null;
+            const presets = cachedPresets ? JSON.parse(cachedPresets) : null;
 
-        if (cachedPresets) {
-            return JSON.parse(cachedPresets);
+            // If both are cached, return them immediately
+            if (devices && presets) {
+                return { devices, presets };
+            }
+
+            // Fetch from API if anything is missing
+            const response = await getDataApi();
+
+            if (response?.data?.data) {
+                const { devices: apiDevices, presets: apiPresets } = response.data.data;
+
+                // Cache them in localStorage
+                localStorage.setItem('defaultDevices', JSON.stringify(apiDevices));
+                localStorage.setItem('presets', JSON.stringify(apiPresets));
+
+                return { devices: apiDevices || [], presets: apiPresets || [] };
+            }
+
+            // Fallback if API fails
+            return { devices: [], presets: [] };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return { devices: [], presets: [] };
         }
-        const response = await getDataApi();
-        localStorage.setItem('defaultDevices', JSON.stringify(response.data.data.devices));
-        localStorage.setItem('presets', JSON.stringify(response.data.data.presets));
-        return response.data.data;
     };
 
     useEffect(() => {
@@ -76,7 +93,7 @@ export const DeviceProvider = ({ children }) => {
     useEffect(() => {
         fetchData().then(data => {
             setDefaultDevices(data.devices);
-            setPresets(data.presets)
+            setPresets(data.presets);
         });
     }, []);
 

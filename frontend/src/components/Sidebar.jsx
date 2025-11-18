@@ -61,7 +61,7 @@ const Sidebar = () => {
                 presets.map((p) => (
                     <DeviceButton
                         key={`presets_${p.id}`}
-                        id={p.id}
+                        id={`p_${p.id}`}
                         name={p.name}
                         device={p.device}
                     />
