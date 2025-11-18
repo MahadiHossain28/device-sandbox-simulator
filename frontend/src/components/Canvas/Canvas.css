@@ -1,0 +1,24 @@
+.toast-body {
+    z-index: 1;
+    overflow: hidden;
+}
+
+.toast-body::before {
+    content: "";
+    position: absolute;
+    width: 212px;
+    height: 212px;
+    top: 50%;
+    left: 8%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+
+    background: radial-gradient(
+            50% 50% at 50% 50%,
+            rgba(0, 237, 81, 0.12) 0%,
+            rgba(0, 237, 123, 0) 100%
+    );
+
+    pointer-events: none;
+    z-index: 0;
+}

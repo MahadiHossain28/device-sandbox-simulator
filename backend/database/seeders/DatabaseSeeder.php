@@ -16,6 +16,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         Device::factory(2)->create();
+         Device::create([
+             'name' => 'Light',
+             'type' => 'light',
+             'settings' => [
+                 'power' => false,
+                 'color' => 'warm',
+                 'brightness' => 10,
+             ]
+         ]);
+
+         Device::create([
+             'name' => 'Fan',
+             'type' => 'fan',
+             'settings' => [
+                 'power' => false,
+                 'speed' => 10,
+             ]
+         ]);
     }
 }

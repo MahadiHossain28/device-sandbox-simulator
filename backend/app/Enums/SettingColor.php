@@ -8,6 +8,8 @@ enum SettingColor: string
     case COOL = 'cool';
     case NEUTRAL = 'neutral';
 
+    case PINK = 'pink';
+
     /**
      * Display Order List Page Label.
      */
@@ -17,6 +19,7 @@ enum SettingColor: string
             self::WARM => 'Warm',
             self::COOL => 'Cool',
             self::NEUTRAL => 'Neutral',
+            self::PINK => 'Pink',
         };
     }
 }

@@ -1,0 +1,10 @@
+.light-item{
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.light-controls>svg {
+    width: 100%;
+}
